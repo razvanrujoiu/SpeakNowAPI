@@ -1,16 +1,14 @@
 package com.razvan.SpeakNowAPI.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "AUDIO_RECORDS")
 public class AudioRecord {
 
-    @Column(name = "ID")
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", updatable = false, nullable = false)
     Integer id;
 
     @Column(name = "TITLE")
@@ -24,6 +22,11 @@ public class AudioRecord {
 
     public AudioRecord(Integer id, String title, byte[] content) {
         this.id = id;
+        this.title = title;
+        this.content = content;
+    }
+
+    public AudioRecord(String title, byte[] content) {
         this.title = title;
         this.content = content;
     }
