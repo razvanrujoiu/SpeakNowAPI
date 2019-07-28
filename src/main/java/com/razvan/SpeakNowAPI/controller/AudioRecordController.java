@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -58,7 +59,7 @@ public class AudioRecordController {
         String fileName = "ivan.wav";
         File file = new File(fileName);
         byte[] fileBytes = Files.readAllBytes(file.toPath());
-        AudioRecord audioRecord = new AudioRecord("Ivan.wav",fileBytes);
+        AudioRecord audioRecord = new AudioRecord("Ivan.wav",fileBytes, new Date(System.currentTimeMillis()));
         audioRecordService.saveAudioRecord(audioRecord);
         return "SUCCESS";
     }

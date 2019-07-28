@@ -1,6 +1,7 @@
 package com.razvan.SpeakNowAPI.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "AUDIO_RECORDS")
@@ -17,6 +18,10 @@ public class AudioRecord {
     @Column(name = "CONTENT")
     byte[] content;
 
+    @Column(name = "DATE")
+    Date date;
+
+
     public AudioRecord() {
     }
 
@@ -29,6 +34,12 @@ public class AudioRecord {
     public AudioRecord(String title, byte[] content) {
         this.title = title;
         this.content = content;
+    }
+
+    public AudioRecord(String title, byte[] content, Date date) {
+        this.title = title;
+        this.content = content;
+        this.date = date;
     }
 
     public Integer getId() {
@@ -53,5 +64,13 @@ public class AudioRecord {
 
     public void setContent(byte[] content) {
         this.content = content;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
